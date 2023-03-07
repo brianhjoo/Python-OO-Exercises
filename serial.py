@@ -35,6 +35,13 @@ class SerialGenerator:
             self.curr_val += 1
             return self.curr_val
 
+    def reset(self):
+        """ resets back to initial start value"""
+
+        self.curr_val = self.start
+        self.has_been_called = False
+
+
 
 
 
