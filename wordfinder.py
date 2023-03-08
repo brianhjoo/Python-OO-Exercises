@@ -22,6 +22,8 @@ class WordFinder:
         for line in file:
             list_of_words.append(line[:-1])
 
+        file.close()
+
         return list_of_words
 
     def printNumOfWordsRead(self):
@@ -34,4 +36,26 @@ class WordFinder:
         """ returns a random word from list_of_words """
 
         return choice(self.list_of_words)
+
+class SpecialWordFinder(WordFinder):
+
+    def __init__(self, path):
+        super().__init__(path)
+
+        print('self_list_of_words=', self.list_of_words)
+
+    def extract_words(self):
+        list_of_words = []
+
+        all_extracted_text = super().extract_words()
+
+        for value in all_extracted_text:
+            if not value[0] == '#' or not value[0] == '\n':
+                list_of_words.append(value)
+        print('list_of_words=', list_of_words)
+
+        return list_of_words
+
+
+
 
