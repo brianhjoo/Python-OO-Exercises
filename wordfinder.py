@@ -38,23 +38,29 @@ class WordFinder:
         return choice(self.list_of_words)
 
 class SpecialWordFinder(WordFinder):
+    """ SpecialWordFinder: filters out #comments and empty lines from a
+    dictionary """
 
     def __init__(self, path):
+        """ inherits class WordFinder's attributes and methods """
         super().__init__(path)
 
-        print('self_list_of_words=', self.list_of_words)
-
     def extract_words(self):
+        """ gets a list of all file items in the original file, then returns
+        a list of those items without #comments or empty lines included """
+
         list_of_words = []
 
         all_extracted_text = super().extract_words()
 
         for value in all_extracted_text:
-            if not value[0] == '#' or not value[0] == '\n':
+            if value.strip() and not value.strip()[0] == '#':
                 list_of_words.append(value)
-        print('list_of_words=', list_of_words)
 
         return list_of_words
+
+
+
 
 
 
