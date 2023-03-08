@@ -12,17 +12,17 @@ class WordFinder:
         self.list_of_words = self.extract_words()
         self.printNumOfWordsRead()
 
-    def extract_words(self) :
-        """ read file and extract words to list_of_words """
+    def extract_words(self) :  #parameter of file/path
+        """ read file and extract words to list_of_words """  # example input/output
 
-        list_of_words = []
+        list_of_words = [] #list comprehension
 
         file = open(self.path)
 
         for line in file:
-            list_of_words.append(line[:-1])
+            list_of_words.append(line[:-1])  #.strip
 
-        file.close()
+        file.close()  #optional
 
         return list_of_words
 
@@ -37,13 +37,14 @@ class WordFinder:
 
         return choice(self.list_of_words)
 
+
 class SpecialWordFinder(WordFinder):
     """ SpecialWordFinder: filters out #comments and empty lines from a
     dictionary """
 
-    def __init__(self, path):
-        """ inherits class WordFinder's attributes and methods """
-        super().__init__(path)
+    # def __init__(self, path):
+    #     """ inherits class WordFinder's attributes and methods """
+    #     super().__init__(path)
 
     def extract_words(self):
         """ gets a list of all file items in the original file, then returns
